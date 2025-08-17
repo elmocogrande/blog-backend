@@ -1,0 +1,28 @@
+{
+  "name": "blog-backend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^4.19.2",
+    "mongodb": "^6.18.0",
+    "mongoose": "^8.17.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "eslint": "^9.33.0",
+    "globals": "^16.3.0",
+    "jest": "^30.0.5",
+    "mongodb-memory-server": "^10.2.0",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.6.2"
+  }
+}
