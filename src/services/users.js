@@ -4,17 +4,18 @@ import jwt from 'jsonwebtoken'
 
 export async function createUser({ username, password }) {
   const hashedPassword = await bcrypt.hash(password, 10)
-  const user = new User({ username, password: hashedPassword })
+  const user = new User({ username, passwordHash: hashedPassword })
   return await user.save()
 }
 
 export async function loginUser({ username, password }) {
   const user = await User.findOne({ username })
   if (!user) {
-    throw new Error('User not found')
+    // Use a generic error message to prevent username enumeration
+    throw new Error('Wrong username or password')
   }
 
-  const isPasswordCorrect = await bcrypt.compare(password, user.password)
+  const isPasswordCorrect = await bcrypt.compare(password, user.passwordHash)
   if (!isPasswordCorrect) {
     throw new Error('Wrong username or password')
   }
