@@ -30,7 +30,7 @@ export async function loginUser({ username, password }) {
 export async function getUserInfoById(userId) {
   try {
     const user = await User.findById(userId)
-    if (!user) return { username: user.userId }
+    if (!user) return { username: userId }
     return { username: user.username }
   } catch (e) {
     return { username: userId }
